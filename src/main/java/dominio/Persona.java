@@ -35,6 +35,10 @@ public class Persona {
             throw new ExceptionPersonaAlturaIncorrecto("Error: La altura no puede ser negativa");
         }
 
+        if(altura == 0 ){
+            throw new ExceptionPersonaAlturaIncorrecto("Error: La altura no puede ser cero");
+        }
+
         return new Persona( id, nombre, apellido, altura, peso, dni, fechaNac);
     }
 

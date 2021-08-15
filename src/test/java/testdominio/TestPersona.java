@@ -58,4 +58,12 @@ public class TestPersona {
         });
     }
 
+    @Test
+    @Order(5)
+    public void test05_Persona_AlturaIncorrecta(){
+        assertThrows(ExceptionPersonaAlturaIncorrecto.class, () ->{
+            Persona p1 = Persona.instaciaPersona(2, "Maximiliano", "Reyna",0,92.0,34724517,LocalDate.of(1989,11,07));
+        });
+    }
+
 }
