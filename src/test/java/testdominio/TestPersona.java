@@ -1,6 +1,7 @@
 package testdominio;
 
 import dominio.Persona;
+import exceptions.ExceptionPersonaAlturaIncorrecto;
 import exceptions.ExceptionPersonaAtributoNulo;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -22,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class TestPersona {
     @Test
     @Order(1)
-    public void Test01_CrearPersona_Sin_Errores() throws ExceptionPersonaAtributoNulo {
+    public void Test01_CrearPersona_Sin_Errores() throws ExceptionPersonaAtributoNulo, ExceptionPersonaAlturaIncorrecto {
         //arrange
         Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,3472512, LocalDate.of(1989,11,07));
         //act
@@ -34,10 +35,27 @@ public class TestPersona {
     }
     @Test
     @Order(2)
-    public void test02_Persona_NombreYApellido_Nulo(){
+    public void test02_Persona_NombreNulo(){
         assertThrows(ExceptionPersonaAtributoNulo.class, () -> {
             Persona p1 = Persona.instaciaPersona(2, null, "Reyna",1.80,92.0,34724517,LocalDate.of(1989,11,07));
         });
 
     }
+
+    @Test
+    @Order(3)
+    public void test03_Persona_ApellidoNulo(){
+        assertThrows(ExceptionPersonaAtributoNulo.class, () ->{
+            Persona p1 = Persona.instaciaPersona(2, "Maximiliano", null,1.80,92.0,34724517,LocalDate.of(1989,11,07));
+        });
+    }
+
+    @Test
+    @Order(4)
+    public void test04_Persona_AlturaIncorrecta(){
+        assertThrows(ExceptionPersonaAlturaIncorrecto.class, () ->{
+            Persona p1 = Persona.instaciaPersona(2, "Maximiliano", "Reyna",-1.58,92.0,34724517,LocalDate.of(1989,11,07));
+        });
+    }
+
 }
