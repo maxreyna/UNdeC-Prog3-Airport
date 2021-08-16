@@ -2,6 +2,7 @@ package dominio;
 
 import exceptions.ExceptionPersonaAlturaIncorrecto;
 import exceptions.ExceptionPersonaAtributoNulo;
+import exceptions.ExceptionPersonaDniIncorrecto;
 import exceptions.ExceptionPersonaPesoIncorrecto;
 
 import java.time.LocalDate;
@@ -25,7 +26,7 @@ public class Persona {
         this.fechaNac = fechaNac;
     }
 
-    public static Persona instaciaPersona(int id, String nombre, String apellido, double altura, double peso, int dni, LocalDate fechaNac) throws ExceptionPersonaAtributoNulo, ExceptionPersonaAlturaIncorrecto, ExceptionPersonaPesoIncorrecto {
+    public static Persona instaciaPersona(int id, String nombre, String apellido, double altura, double peso, int dni, LocalDate fechaNac) throws ExceptionPersonaAtributoNulo, ExceptionPersonaAlturaIncorrecto, ExceptionPersonaPesoIncorrecto, ExceptionPersonaDniIncorrecto {
         if(nombre == null){
             throw new ExceptionPersonaAtributoNulo("Error: El nombre no puede ser nulo");
         }
@@ -46,6 +47,10 @@ public class Persona {
 
         if (peso == 0){
             throw new ExceptionPersonaPesoIncorrecto("Error: El peso no puede ser cero");
+        }
+
+        if (Integer.toString(dni).length() < 7){
+            throw new ExceptionPersonaDniIncorrecto("Error: Numero de dni muy corto");
         }
 
         return new Persona( id, nombre, apellido, altura, peso, dni, fechaNac);
