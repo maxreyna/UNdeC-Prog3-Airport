@@ -2,6 +2,7 @@ package dominio;
 
 import exceptions.ExceptionPersonaAlturaIncorrecto;
 import exceptions.ExceptionPersonaAtributoNulo;
+import exceptions.ExceptionPersonaPesoIncorrecto;
 
 import java.time.LocalDate;
 
@@ -24,7 +25,7 @@ public class Persona {
         this.fechaNac = fechaNac;
     }
 
-    public static Persona instaciaPersona(int id, String nombre, String apellido, double altura, double peso, int dni, LocalDate fechaNac) throws ExceptionPersonaAtributoNulo, ExceptionPersonaAlturaIncorrecto {
+    public static Persona instaciaPersona(int id, String nombre, String apellido, double altura, double peso, int dni, LocalDate fechaNac) throws ExceptionPersonaAtributoNulo, ExceptionPersonaAlturaIncorrecto, ExceptionPersonaPesoIncorrecto {
         if(nombre == null){
             throw new ExceptionPersonaAtributoNulo("Error: El nombre no puede ser nulo");
         }
@@ -37,6 +38,14 @@ public class Persona {
 
         if(altura == 0 ){
             throw new ExceptionPersonaAlturaIncorrecto("Error: La altura no puede ser cero");
+        }
+
+        if (peso < 0){
+            throw new ExceptionPersonaPesoIncorrecto("Error: El peso no puede ser negativo");
+        }
+
+        if (peso == 0){
+            throw new ExceptionPersonaPesoIncorrecto("Error: El peso no puede ser cero");
         }
 
         return new Persona( id, nombre, apellido, altura, peso, dni, fechaNac);
