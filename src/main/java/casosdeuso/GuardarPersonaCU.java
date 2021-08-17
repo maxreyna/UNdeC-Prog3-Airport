@@ -1,6 +1,7 @@
 package casosdeuso;
 
 import dominio.Persona;
+import exceptions.ExceptionPersonaExiste;
 import repositorio.IGuardarPersona;
 import repositorio.ILeerPersona;
 
@@ -13,9 +14,9 @@ public class GuardarPersonaCU {
         this.iLeerPersonaCU = iLeerPersona;
     }
 
-    public boolean cargarPersona(Persona p1) {
+    public boolean cargarPersona(Persona p1) throws ExceptionPersonaExiste {
         if(iLeerPersonaCU.buscarPersonaPorDni(p1.getDni())){
-            return false;
+            throw new ExceptionPersonaExiste("La persona buscada ya se encuentra en la BD");
         }
         return iGuardarPersonaCU.guardarPersona(p1);
     }

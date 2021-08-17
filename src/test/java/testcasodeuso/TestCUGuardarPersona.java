@@ -4,6 +4,7 @@ package testcasodeuso;
 import casosdeuso.GuardarPersonaCU;
 import dominio.Persona;
 import exceptions.ExceptionPersona;
+import exceptions.ExceptionPersonaExiste;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -17,6 +18,7 @@ import repositorio.ILeerPersona;
 
 import java.time.LocalDate;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -40,6 +42,22 @@ public class TestCUGuardarPersona {
 
         //assert
         assertTrue(simularGuardarPersona.cargarPersona(p1));
+    }
+
+    @Order(2)
+    @Test
+    public void test02_guardarPersona_personaExiste_lanzaExceptionPersonaExiste() throws ExceptionPersona{
+
+        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,07));
+        GuardarPersonaCU simularGuardarPersona = new GuardarPersonaCU(iGuardarPersona, iLeerPersona);
+
+        Mockito.when(iLeerPersona.buscarPersonaPorDni("34724517")).thenReturn(true);
+        Mockito.verify(iGuardarPersona,Mockito.never()).guardarPersona(p1);
+
+        //assert
+        assertThrows(ExceptionPersonaExiste.class, () ->{
+            simularGuardarPersona.cargarPersona(p1);
+        });
     }
 
 }
