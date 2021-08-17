@@ -5,6 +5,7 @@ import exceptions.ExceptionPersonaAtributoNulo;
 import exceptions.ExceptionPersonaDniIncorrecto;
 import exceptions.ExceptionPersonaPesoIncorrecto;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.time.LocalDate;
 
 public class Persona {
@@ -54,6 +55,10 @@ public class Persona {
         }
 
         return new Persona( id, nombre, apellido, altura, peso, dni, fechaNac);
+    }
+
+    public String getDni() {
+        return Integer.toString(dni);
     }
 
 
