@@ -21,4 +21,5 @@ public class TestAuto {
         Auto a1 = Auto.instanciaAuto("Peugeot", "Allure", "Blanco", "1.6", "ab 123 cd", "2017");
         assertNotNull(a1);
     }
+
 }
