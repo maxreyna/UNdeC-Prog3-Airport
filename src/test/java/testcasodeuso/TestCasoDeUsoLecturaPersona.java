@@ -13,8 +13,7 @@ import repositorio.ILeerPersona;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 
@@ -36,7 +35,14 @@ public class TestCasoDeUsoLecturaPersona {
 
     @Order(2)
     @Test
-    public void Test02_BusquedaPersona_Persona(){
+    public void Test02_BusquedaPersona_PersonaNoExiste() throws ExceptionPersona {
+        //arrange
+        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,07));
+        //act
+        Mockito.when(iLeerPersona.buscarPersonaPorDni("34724517")).thenReturn(false);
+        BuscarPersonaCU simularBusqueda = new BuscarPersonaCU(iLeerPersona);
 
+        //assert
+        assertFalse(simularBusqueda.buscarPersona("34724517"));
     }
 }
