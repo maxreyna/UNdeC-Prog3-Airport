@@ -1,6 +1,7 @@
 package casosdeuso;
 
 import dominio.Persona;
+import exceptions.ExceptionPersonaNoEncontrada;
 import repositorio.ITraerPersona;
 
 public class TraerPersonaCU {
@@ -10,8 +11,11 @@ public class TraerPersonaCU {
         this.iTraerPersona = iTraerPersona;
     }
 
-    public Persona traerPersona(String dniBuscado) {
+    public Persona traerPersona(String dniBuscado) throws ExceptionPersonaNoEncontrada {
         Persona personaEncontrada = iTraerPersona.damePersonaSegunDni(dniBuscado);
+        if(personaEncontrada == null){
+            throw new ExceptionPersonaNoEncontrada("La persona buscada no se encuentra en la BD");
+        }
         return personaEncontrada;
     }
 }
