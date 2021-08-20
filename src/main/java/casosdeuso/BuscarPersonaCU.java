@@ -1,6 +1,6 @@
 package casosdeuso;
 
-import dominio.Persona;
+
 import repositorio.ILeerPersona;
 
 public class BuscarPersonaCU {
