@@ -1,6 +1,7 @@
 package dominio;
 
 public class Auto {
+    private int id;
     private String marca;
     private String modelo;
     private String color;
@@ -8,7 +9,8 @@ public class Auto {
     private String patente;
     private String anio;
 
-    public Auto(String marca, String modelo, String color, String cilindrada, String patente, String anio) {
+    public Auto(int id, String marca, String modelo, String color, String cilindrada, String patente, String anio) {
+        this.id = id;
         this.marca=marca;
         this.modelo=modelo;
         this.color=color;
@@ -18,7 +20,7 @@ public class Auto {
     }
 
 
-    public static Auto instanciaAuto(String marca, String modelo, String color, String cilindrada, String patente, String anio) {
-        return new Auto(marca, modelo, color, cilindrada, patente, anio);
+    public static Auto instanciaAuto(int id, String marca, String modelo, String color, String cilindrada, String patente, String anio) {
+        return new Auto(id,marca, modelo, color, cilindrada, patente, anio);
     }
 }

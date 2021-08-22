@@ -1,7 +1,7 @@
 package testcasodeuso;
 
 import casosdeuso.ModificarPersonaCU;
-import casosdeuso.TraerPersonaCU;
+
 import dominio.Persona;
 import exceptions.*;
 import org.junit.jupiter.api.*;
