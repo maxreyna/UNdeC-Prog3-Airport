@@ -3,6 +3,7 @@ package testcasodeuso;
 import casosdeuso.BuscarPersonaCU;
 import dominio.Persona;
 import exceptions.ExceptionPersona;
+import exceptions.ExceptionPersonaNoEncontrada;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -57,6 +58,24 @@ public class TestCUEliminarPersona {
 
         //assert
         assertFalse(simulacro.darDeBajaPersona("34724517"));
+    }
+
+    @Order(3)
+    @Test
+
+    public void test03_EliminarPersona_PersonaNoEncontrada() throws ExceptionPersona {
+        //arrange
+        EliminarPersonaCU simulacro = new EliminarPersonaCU(iLeerPersona,iEliminarPersona);
+
+        //act
+        Mockito.when(iLeerPersona.buscarPersonaPorDni("34724517")).thenReturn(false);
+        Mockito.verify(iEliminarPersona,Mockito.never()).darBajaPersona("34724517");
+
+
+        //assert
+        assertThrows(ExceptionPersonaNoEncontrada.class,()->{
+            simulacro.darDeBajaPersona("34724517");
+        });
     }
 
 

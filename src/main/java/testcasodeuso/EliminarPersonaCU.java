@@ -1,5 +1,6 @@
 package testcasodeuso;
 
+import exceptions.ExceptionPersonaNoEncontrada;
 import repositorio.IEliminarPersona;
 import repositorio.ILeerPersona;
 
@@ -12,9 +13,10 @@ public class EliminarPersonaCU {
         this.iEliminarPersona = iEliminarPersona;
     }
 
-    public boolean darDeBajaPersona(String dniPersonaAEliminar) {
-        if(!iLeerPersona.buscarPersonaPorDni(dniPersonaAEliminar))
-            return false;
+    public boolean darDeBajaPersona(String dniPersonaAEliminar) throws ExceptionPersonaNoEncontrada {
+        if(!iLeerPersona.buscarPersonaPorDni(dniPersonaAEliminar)){
+            throw new ExceptionPersonaNoEncontrada("La persona no se encuentra en la BD");
+        }
         return iEliminarPersona.darBajaPersona(dniPersonaAEliminar);
     }
 }
