@@ -71,6 +71,14 @@ public class Persona {
         return this.peso;
     }
 
+    public void setAltura(double nuevaAltura) {
+        this.altura=nuevaAltura;
+    }
+
+    public double getAltura() {
+        return this.altura;
+    }
+
 
     //aca programar la clase
     //agregar metodo instanciaPersona
