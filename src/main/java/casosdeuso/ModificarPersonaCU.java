@@ -1,6 +1,7 @@
 package casosdeuso;
 
 import dominio.Persona;
+import exceptions.ExceptionPersonaAlturaIncorrecto;
 import exceptions.ExceptionPersonaPesoIncorrecto;
 import repositorio.IModificarPersona;
 import repositorio.ITraerPersona;
@@ -23,7 +24,10 @@ public class ModificarPersonaCU {
         return iModificarPersona.modificarPeso(personaAModificar);
     }
 
-    public boolean modificarAlturaPersona(int dni, double nuevaAltura) {
+    public boolean modificarAlturaPersona(int dni, double nuevaAltura) throws ExceptionPersonaAlturaIncorrecto {
+        if (nuevaAltura<0){
+            throw new ExceptionPersonaAlturaIncorrecto("La altura no puede ser negativa");
+        }
         Persona personaAModificar = iTraerPersona.damePersonaSegunDni(dni);
         personaAModificar.setAltura(nuevaAltura);
         return iModificarPersona.modificarAltura(personaAModificar);
