@@ -63,7 +63,7 @@ public class Persona {
         return Integer.toString(dni);
     }
 
-    public void setPeso(double nuevoPeso) {
+    public void setPeso(double nuevoPeso) throws ExceptionPersonaPesoIncorrecto {
         this.peso = nuevoPeso;
     }
 

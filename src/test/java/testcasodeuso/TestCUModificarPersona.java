@@ -56,6 +56,23 @@ public class TestCUModificarPersona{
 
     }
 
+    @Order(3)
+    @Test
+
+    public void test03_modificarPersona_cambioDePesoNegativo_Exception() throws ExceptionPersona{
+        //arrange
+        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,07));
+        ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
+        //act
+        Mockito.verify(iTraerPersona,Mockito.never()).damePersonaSegunDni(34724517);
+        Mockito.verify(iModificarPersona,Mockito.never()).modificarPeso(p1);
+        //assert
+        assertThrows(ExceptionPersonaPesoIncorrecto.class,() ->{
+            simulacro.modificarPesoPersona(34724517,-94);
+        });
+
+    }
+
 }
 
 
