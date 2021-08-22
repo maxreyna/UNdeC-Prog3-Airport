@@ -39,6 +39,22 @@ public class TestCUModificarPersona{
         assertTrue(simulacro.modificarPesoPersona(34724517,92.0));
 
     }
+    @Order(2)
+    @Test
+
+    public void test02_modificarPersona_cambioDePesoFallido() throws ExceptionPersona{
+        //arrange
+        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,07));
+        ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
+        //act
+        Mockito.when(iTraerPersona.damePersonaSegunDni(34724517)).thenReturn(p1);
+        p1.setPeso(92.0);
+        Mockito.when(iModificarPersona.modificarPeso(p1)).thenReturn(false);
+        //assert
+        assertEquals(92.0,p1.getPeso());
+        assertFalse(simulacro.modificarPesoPersona(34724517,92.0));
+
+    }
 
 }
 
