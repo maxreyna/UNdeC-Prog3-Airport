@@ -4,5 +4,5 @@ import dominio.Persona;
 
 public interface ITraerPersona {
 
-    Persona damePersonaSegunDni(String dni);
+    Persona damePersonaSegunDni(int dni);
 }

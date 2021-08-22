@@ -9,6 +9,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import java.time.LocalDate;
 
 public class Persona {
+
+
     private int id;
     private String nombre;
     private String apellido;
@@ -59,6 +61,14 @@ public class Persona {
 
     public String getDni() {
         return Integer.toString(dni);
+    }
+
+    public void setPeso(double nuevoPeso) {
+        this.peso = nuevoPeso;
+    }
+
+    public double getPeso() {
+        return this.peso;
     }
 
 

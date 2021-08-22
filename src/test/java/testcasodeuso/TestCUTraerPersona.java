@@ -29,10 +29,10 @@ public class TestCUTraerPersona {
         TraerPersonaCU simular = new TraerPersonaCU(iTraerPersona);
 
         //act
-        Mockito.when(iTraerPersona.damePersonaSegunDni("34724517")).thenReturn(p1);
+        Mockito.when(iTraerPersona.damePersonaSegunDni(34724517)).thenReturn(p1);
 
         //assert
-        assertEquals(p1,simular.traerPersona("34724517"));
+        assertEquals(p1,simular.traerPersona(34724517));
     }
 
     @Order(2)
@@ -41,11 +41,11 @@ public class TestCUTraerPersona {
         TraerPersonaCU simular = new TraerPersonaCU(iTraerPersona);
 
         //act
-        Mockito.when(iTraerPersona.damePersonaSegunDni("34724517")).thenReturn(null);
+        Mockito.when(iTraerPersona.damePersonaSegunDni(34724517)).thenReturn(null);
 
         //assert
         assertThrows(ExceptionPersonaNoEncontrada.class, ()->{
-            simular.traerPersona("34724517");
+            simular.traerPersona(34724517);
         });
     }
 
