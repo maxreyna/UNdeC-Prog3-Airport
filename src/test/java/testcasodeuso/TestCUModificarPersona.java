@@ -89,6 +89,22 @@ public class TestCUModificarPersona{
 
     }
 
+    @Order(5)
+    @Test
+    public void test05_modificarPersona_cambioDeAlturaFallido() throws ExceptionPersona{
+        //arrange
+        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,07));
+        ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
+        //act
+        Mockito.when(iTraerPersona.damePersonaSegunDni(34724517)).thenReturn(p1);
+        p1.setAltura(1.82);
+        Mockito.when(iModificarPersona.modificarAltura(p1)).thenReturn(false);
+        //assert
+        assertEquals(1.82,p1.getAltura());
+        assertFalse(simulacro.modificarAlturaPersona(34724517,1.82));
+
+    }
+
 }
 
 
