@@ -43,4 +43,21 @@ public class TestCUEliminarPersona {
     }
 
 
+    @Order(2)
+    @Test
+
+    public void test02_EliminarPersona_EliminarPersonaFallido() throws ExceptionPersona {
+        //arrange
+        EliminarPersonaCU simulacro = new EliminarPersonaCU(iLeerPersona,iEliminarPersona);
+
+        //act
+        Mockito.when(iLeerPersona.buscarPersonaPorDni("34724517")).thenReturn(true);
+        Mockito.when(iEliminarPersona.darBajaPersona("34724517")).thenReturn(false);
+
+
+        //assert
+        assertFalse(simulacro.darDeBajaPersona("34724517"));
+    }
+
+
 }
