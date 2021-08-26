@@ -26,7 +26,7 @@ public class TestCUModificarPersona{
 
     @Order(1)
     @Test
-    public void test01_modificarPersona_SeModificanSusDatosCorrectamente() throws ExceptionPersona{
+    public void test01_modificarDatosPersona_SeModificanSusDatosCorrectamente() throws ExceptionPersona{
         //arrange
         Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,07));
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
@@ -42,7 +42,7 @@ public class TestCUModificarPersona{
     @Order(2)
     @Test
 
-    public void test02_modificarPersona_cambioDePesoFallido() throws ExceptionPersona{
+    public void test02_modificarPesoPersona_cambioDePesoFallido() throws ExceptionPersona{
         //arrange
         Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,07));
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
@@ -59,7 +59,7 @@ public class TestCUModificarPersona{
     @Order(3)
     @Test
 
-    public void test03_modificarPersona_cambioDePesoNegativo_Exception() throws ExceptionPersona{
+    public void test03_modificarPesoPersona_cambioDePesoNegativo_Exception() throws ExceptionPersona{
         //arrange
         Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,07));
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
@@ -75,7 +75,7 @@ public class TestCUModificarPersona{
 
     @Order(4)
     @Test
-    public void test04_modificarPersona_SeModificaAlturaCorrectamente() throws ExceptionPersona{
+    public void test04_modificarAlturaPersona_SeModificaAlturaCorrectamente() throws ExceptionPersona{
         //arrange
         Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,07));
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
@@ -91,7 +91,7 @@ public class TestCUModificarPersona{
 
     @Order(5)
     @Test
-    public void test05_modificarPersona_cambioDeAlturaFallido() throws ExceptionPersona{
+    public void test05_modificarAlturaPersona_cambioDeAlturaFallido() throws ExceptionPersona{
         //arrange
         Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,07));
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
@@ -108,7 +108,7 @@ public class TestCUModificarPersona{
     @Order(6)
     @Test
 
-    public void test06_modificarPersona_alturaNegativa_Exception() throws ExceptionPersona{
+    public void test06_modificarAlturaPersona_alturaNegativa_Exception() throws ExceptionPersona{
         //arrange
         Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,07));
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
