@@ -1,0 +1,11 @@
+Reglas de negocio:
+* Las personas van a tener como atributos id,nombre,apellido,dni,altura,peso,fecha de nacimiento.
+* Ningun dato puede ser nulo.
+* Se pueden modificar los atributos:
+        +nombre
+        +apellido
+        +altura
+        +peso
+
+* No pueden haber personas con el mismo dni.
+* La altura y el peso no pueden ser iguales a cero o negativos.
