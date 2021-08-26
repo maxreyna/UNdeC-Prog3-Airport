@@ -34,21 +34,14 @@ public class Persona {
             throw new ExceptionPersonaAtributoNulo("Error: Los campos nombre, apellido, no pueden ser nulos");
         }
 
-        if(altura < 0 ){
-            throw new ExceptionPersonaAlturaIncorrecto("Error: La altura no puede ser negativa");
+        if(altura <= 0 ){
+            throw new ExceptionPersonaAlturaIncorrecto("Error: El campo altura no puede ser negativa y tampoco cero");
         }
 
-        if(altura == 0 ){
-            throw new ExceptionPersonaAlturaIncorrecto("Error: La altura no puede ser cero");
+        if (peso <= 0){
+            throw new ExceptionPersonaPesoIncorrecto("Error: El campo peso no puede ser negativo y tampoco cero");
         }
 
-        if (peso < 0){
-            throw new ExceptionPersonaPesoIncorrecto("Error: El peso no puede ser negativo");
-        }
-
-        if (peso == 0){
-            throw new ExceptionPersonaPesoIncorrecto("Error: El peso no puede ser cero");
-        }
 
         if (Integer.toString(dni).length() < 7){
             throw new ExceptionPersonaDniIncorrecto("Error: Numero de dni muy corto");
