@@ -30,12 +30,10 @@ public class Persona {
     }
 
     public static Persona instaciaPersona(int id, String nombre, String apellido, double altura, double peso, int dni, LocalDate fechaNac) throws ExceptionPersonaAtributoNulo, ExceptionPersonaAlturaIncorrecto, ExceptionPersonaPesoIncorrecto, ExceptionPersonaDniIncorrecto {
-        if(nombre == null){
-            throw new ExceptionPersonaAtributoNulo("Error: El nombre no puede ser nulo");
+        if(nombre == null || apellido == null ){
+            throw new ExceptionPersonaAtributoNulo("Error: Los campos nombre, apellido, no pueden ser nulos");
         }
-        if(apellido == null){
-            throw new ExceptionPersonaAtributoNulo("Error: El apellido no puede ser nulo");
-        }
+
         if(altura < 0 ){
             throw new ExceptionPersonaAlturaIncorrecto("Error: La altura no puede ser negativa");
         }
