@@ -64,13 +64,12 @@ public class TestCUModificarPersona{
         Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,07));
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
         //act
-        Mockito.verify(iTraerPersona,Mockito.never()).damePersonaSegunDni(34724517);
+        Mockito.when(iTraerPersona.damePersonaSegunDni(34724517)).thenReturn(p1);
         Mockito.verify(iModificarPersona,Mockito.never()).modificarPeso(p1);
         //assert
         assertThrows(ExceptionPersonaPesoIncorrecto.class,() ->{
             simulacro.modificarPesoPersona(34724517,-94);
         });
-
     }
 
     @Order(4)
@@ -113,7 +112,7 @@ public class TestCUModificarPersona{
         Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,07));
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
         //act
-        Mockito.verify(iTraerPersona,Mockito.never()).damePersonaSegunDni(34724517);
+        Mockito.when(iTraerPersona.damePersonaSegunDni(34724517)).thenReturn(p1);
         Mockito.verify(iModificarPersona,Mockito.never()).modificarAltura(p1);
         //assert
         assertThrows(ExceptionPersonaAlturaIncorrecto.class,() ->{
