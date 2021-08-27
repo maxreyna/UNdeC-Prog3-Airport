@@ -118,13 +118,23 @@ public class TestPersona {
     }
 
     @Test
-    @Order(10)
+    @Order(12)
     public void actulizarPeso_PesoNegativo_ExcepctionPesoErroneo()throws ExceptionPersona{
         //arrange
         Persona p1 = Persona.instaciaPersona(1,"Santiago","Chanampe",1.80,94.0,37724517, LocalDate.of(1997,11,7));
-     
+
         //assert
         assertThrows(ExceptionPersonaPesoIncorrecto.class,() -> p1.actualizarPeso(-92.0));
+    }
+
+    @Test
+    @Order(13)
+    public void actulizarPeso_PesoCero_ExcepctionPesoErroneo()throws ExceptionPersona{
+        //arrange
+        Persona p1 = Persona.instaciaPersona(1,"Santiago","Chanampe",1.80,94.0,37724517, LocalDate.of(1997,11,7));
+
+        //assert
+        assertThrows(ExceptionPersonaPesoIncorrecto.class,() -> p1.actualizarPeso(0.0));
     }
 
 }
