@@ -1,10 +1,7 @@
 package testdominio;
 
 import dominio.Persona;
-import exceptions.ExceptionPersonaAlturaIncorrecto;
-import exceptions.ExceptionPersonaAtributoNulo;
-import exceptions.ExceptionPersonaDniIncorrecto;
-import exceptions.ExceptionPersonaPesoIncorrecto;
+import exceptions.*;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -14,15 +11,15 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 
 import java.time.LocalDate;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 @ExtendWith(MockitoExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestPersona {
-    @Test
     @Order(1)
+    @Test
     public void Test01_CrearPersona_Sin_Errores() throws ExceptionPersonaAtributoNulo, ExceptionPersonaAlturaIncorrecto, ExceptionPersonaPesoIncorrecto, ExceptionPersonaDniIncorrecto {
         //arrange
         Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,3472512, LocalDate.of(1989,11,7));
@@ -81,6 +78,43 @@ public class TestPersona {
     public void test08_Persona_DniIncorrecto(){
         assertThrows(ExceptionPersonaDniIncorrecto.class, () ->Persona.instaciaPersona(8, "Maximiliano", "Reyna",1.80,92,347245,LocalDate.of(1989,11,7))
         );
+    }
+
+    @Test
+    @Order(9)
+    public void actualizarPersona_SeModificanDatosPersona() throws ExceptionPersona {
+        Persona estaPersona = Persona.instaciaPersona(1,"Santiago","Chanampe",1.80,92.0,37724517, LocalDate.of(1997,11,7));
+        Persona personaActualizada = Persona.instaciaPersona(1,"Jessica","Rojas",1.78,60,37724517, LocalDate.of(1997,11,7));
+
+        assertTrue(estaPersona.actualizarDatos(personaActualizada));
+        assertEquals(personaActualizada.getNombre(),estaPersona.getNombre());
+        assertEquals(personaActualizada.getApellido(),estaPersona.getApellido());
+        assertEquals(personaActualizada.getAltura(),estaPersona.getAltura());
+        assertEquals(personaActualizada.getPeso(),estaPersona.getPeso());
+
+    }
+
+    @Test
+    @Order(10)
+    public void actulizarPeso_PesoSeActulizaCorrectamente()throws ExceptionPersona{
+        //arrange
+        Persona p1 = Persona.instaciaPersona(1,"Santiago","Chanampe",1.80,94.0,37724517, LocalDate.of(1997,11,7));
+        //act
+        p1.actualizarPeso(92.0);
+
+        //assert
+        assertEquals(92.0,p1.getPeso());
+    }
+
+    @Test
+    @Order(11)
+    public void actualizarAltura_LaAlturaSeActualizaCorrectamente()throws ExceptionPersona{
+        //arrange
+        Persona p1 = Persona.instaciaPersona(1,"Santiago","Chanampe",1.80,94.0,37724517, LocalDate.of(1997,11,7));
+        //act
+        p1.actualizarAltura(1.82);
+        //assert
+        assertEquals(1.82,p1.getAltura());
     }
 
 }

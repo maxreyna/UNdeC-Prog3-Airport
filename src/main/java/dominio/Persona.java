@@ -1,9 +1,6 @@
 package dominio;
 
-import exceptions.ExceptionPersonaAlturaIncorrecto;
-import exceptions.ExceptionPersonaAtributoNulo;
-import exceptions.ExceptionPersonaDniIncorrecto;
-import exceptions.ExceptionPersonaPesoIncorrecto;
+import exceptions.*;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import java.time.LocalDate;
@@ -54,7 +51,7 @@ public class Persona {
         return Integer.toString(dni);
     }
 
-    public void setPeso(double nuevoPeso) throws ExceptionPersonaPesoIncorrecto {
+    private void setPeso(double nuevoPeso) {
         this.peso = nuevoPeso;
     }
 
@@ -62,12 +59,45 @@ public class Persona {
         return this.peso;
     }
 
-    public void setAltura(double nuevaAltura) {
+    private void setAltura(double nuevaAltura) {
         this.altura=nuevaAltura;
     }
 
     public double getAltura() {
         return this.altura;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    private void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    private void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public boolean actualizarDatos(Persona personaActualizada) {
+        setNombre(personaActualizada.getNombre());
+        setApellido(personaActualizada.getApellido());
+        setAltura(personaActualizada.getAltura());
+        setPeso(personaActualizada.getPeso());
+
+        return true;
+    }
+
+    public void actualizarPeso(double pesoActualizado) throws ExceptionPersona {
+        this.actualizarDatos(Persona.instaciaPersona(id,nombre,apellido,altura,pesoActualizado,dni,fechaNac));
+    }
+
+    public void actualizarAltura(double alturaActualizada) throws ExceptionPersona{
+        this.actualizarDatos(Persona.instaciaPersona(id,nombre,apellido,alturaActualizada,peso,dni,fechaNac));
     }
 
 

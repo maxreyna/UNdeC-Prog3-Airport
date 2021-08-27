@@ -32,10 +32,10 @@ public class TestCUModificarPersona{
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
         //act
         Mockito.when(iTraerPersona.damePersonaSegunDni(34724517)).thenReturn(p1);
-        p1.setPeso(92.0);
+        p1.actualizarPeso(92.0);
         Mockito.when(iModificarPersona.modificarPeso(p1)).thenReturn(true);
         //assert
-        assertEquals(92.0,p1.getPeso());
+
         assertTrue(simulacro.modificarPesoPersona(34724517,92.0));
 
     }
@@ -48,10 +48,10 @@ public class TestCUModificarPersona{
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
         //act
         Mockito.when(iTraerPersona.damePersonaSegunDni(34724517)).thenReturn(p1);
-        p1.setPeso(92.0);
+        p1.actualizarPeso(92.0);
         Mockito.when(iModificarPersona.modificarPeso(p1)).thenReturn(false);
         //assert
-        assertEquals(92.0,p1.getPeso());
+
         assertFalse(simulacro.modificarPesoPersona(34724517,92.0));
 
     }
@@ -81,10 +81,10 @@ public class TestCUModificarPersona{
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
         //act
         Mockito.when(iTraerPersona.damePersonaSegunDni(34724517)).thenReturn(p1);
-        p1.setAltura(1.82);
+        p1.actualizarAltura(1.82);
         Mockito.when(iModificarPersona.modificarAltura(p1)).thenReturn(true);
         //assert
-        assertEquals(1.82,p1.getAltura());
+
         assertTrue(simulacro.modificarAlturaPersona(34724517,1.82));
 
     }
@@ -97,10 +97,10 @@ public class TestCUModificarPersona{
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
         //act
         Mockito.when(iTraerPersona.damePersonaSegunDni(34724517)).thenReturn(p1);
-        p1.setAltura(1.82);
+        p1.actualizarAltura(1.82);
         Mockito.when(iModificarPersona.modificarAltura(p1)).thenReturn(false);
         //assert
-        assertEquals(1.82,p1.getAltura());
+
         assertFalse(simulacro.modificarAlturaPersona(34724517,1.82));
 
     }
