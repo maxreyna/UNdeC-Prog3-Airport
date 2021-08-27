@@ -117,4 +117,14 @@ public class TestPersona {
         assertEquals(1.82,p1.getAltura());
     }
 
+    @Test
+    @Order(10)
+    public void actulizarPeso_PesoNegativo_ExcepctionPesoErroneo()throws ExceptionPersona{
+        //arrange
+        Persona p1 = Persona.instaciaPersona(1,"Santiago","Chanampe",1.80,94.0,37724517, LocalDate.of(1997,11,7));
+     
+        //assert
+        assertThrows(ExceptionPersonaPesoIncorrecto.class,() -> p1.actualizarPeso(-92.0));
+    }
+
 }
