@@ -220,6 +220,21 @@ public class TestCUModificarPersona{
         assertFalse(simulacro.modificarDatosPersona(personaActualizada));
     }
 
+    @Order(13)
+    @Test
+    public void test13_modificarDatosPersona_PersonaNoExiste_ExceptionPersonaNoEncontrada() throws ExceptionPersona{
+        //arrange
+        Persona personaActualizada = Persona.instaciaPersona(1,"Jessica","Rojas",1.78,60,37724517, LocalDate.of(1997,11,7));
+
+        ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
+
+        //act
+        Mockito.when(iTraerPersona.damePersonaSegunDni(personaActualizada.getDniInt())).thenReturn(null);
+        Mockito.verify(iModificarPersona,Mockito.never()).modificarDatos(personaActualizada);
+        //assert
+        assertThrows(ExceptionPersonaNoEncontrada.class,() -> simulacro.modificarDatosPersona(personaActualizada));
+    }
+
 }
 
 

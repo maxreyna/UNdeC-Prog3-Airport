@@ -42,8 +42,11 @@ public class ModificarPersonaCU {
         return iModificarPersona.modificarAltura(personaAModificar);
     }
 
-    public boolean modificarDatosPersona(Persona personaActualizada) {
+    public boolean modificarDatosPersona(Persona personaActualizada)throws ExceptionPersona {
         Persona personaBuscada = iTraerPersona.damePersonaSegunDni(personaActualizada.getDniInt());
+        if(personaBuscada == null){
+            throw new ExceptionPersonaNoEncontrada("Error: La persona buscada no se encuentra en la BD");
+        }
         personaBuscada.actualizarDatos(personaActualizada);
         return iModificarPersona.modificarDatos(personaBuscada);
     }
