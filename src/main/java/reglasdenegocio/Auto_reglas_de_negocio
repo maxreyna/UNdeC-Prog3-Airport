@@ -1,0 +1,12 @@
+Reglas de Auto:
+* Los autos van a tener como atributos id,marca,modelo,color,cilindrada,patente,anio.
+
+* Ningun dato puede ser nulo,pero se pueden existir datos vacios como el color.
+
+* La cilindrada, puertas , anio no pueden ser negativos ni cero.
+
+* Se pueden modificar los atributos:
+        +color
+        +cilindrada
+
+* No pueden existir autos con la misma patente.
