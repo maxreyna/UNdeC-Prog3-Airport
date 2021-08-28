@@ -29,6 +29,11 @@ public class ModificarPersonaCU {
     }
 
     public boolean modificarAlturaPersona(int dni, double nuevaAltura) throws ExceptionPersona {
+
+        if(Integer.toString(dni).length() > 8){
+            throw new ExceptionPersonaDniIncorrecto("Error: DNI incorrecto");
+        }
+
         Persona personaAModificar = iTraerPersona.damePersonaSegunDni(dni);
         if(personaAModificar == null){
             throw new ExceptionPersonaNoEncontrada("La persona buscada no existe en la BD");
