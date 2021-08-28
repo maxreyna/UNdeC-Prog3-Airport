@@ -28,7 +28,7 @@ public class TestCUModificarPersona{
     @Test
     public void test01_modificarDatosPersona_SeModificanSusDatosCorrectamente() throws ExceptionPersona{
         //arrange
-        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,07));
+        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,7));
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
         //act
         Mockito.when(iTraerPersona.damePersonaSegunDni(34724517)).thenReturn(p1);
@@ -44,7 +44,7 @@ public class TestCUModificarPersona{
 
     public void test02_modificarPesoPersona_cambioDePesoFallido() throws ExceptionPersona{
         //arrange
-        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,07));
+        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,7));
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
         //act
         Mockito.when(iTraerPersona.damePersonaSegunDni(34724517)).thenReturn(p1);
@@ -61,22 +61,20 @@ public class TestCUModificarPersona{
 
     public void test03_modificarPesoPersona_cambioDePesoNegativo_Exception() throws ExceptionPersona{
         //arrange
-        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,07));
+        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,7));
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
         //act
         Mockito.when(iTraerPersona.damePersonaSegunDni(34724517)).thenReturn(p1);
         Mockito.verify(iModificarPersona,Mockito.never()).modificarPeso(p1);
         //assert
-        assertThrows(ExceptionPersonaPesoIncorrecto.class,() ->{
-            simulacro.modificarPesoPersona(34724517,-94);
-        });
+        assertThrows(ExceptionPersonaPesoIncorrecto.class,() -> simulacro.modificarPesoPersona(34724517,-94));
     }
 
     @Order(4)
     @Test
     public void test04_modificarAlturaPersona_SeModificaAlturaCorrectamente() throws ExceptionPersona{
         //arrange
-        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,07));
+        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,7));
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
         //act
         Mockito.when(iTraerPersona.damePersonaSegunDni(34724517)).thenReturn(p1);
@@ -92,7 +90,7 @@ public class TestCUModificarPersona{
     @Test
     public void test05_modificarAlturaPersona_cambioDeAlturaFallido() throws ExceptionPersona{
         //arrange
-        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,07));
+        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,7));
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
         //act
         Mockito.when(iTraerPersona.damePersonaSegunDni(34724517)).thenReturn(p1);
@@ -109,15 +107,14 @@ public class TestCUModificarPersona{
 
     public void test06_modificarAlturaPersona_alturaNegativa_Exception() throws ExceptionPersona{
         //arrange
-        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,07));
+        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,7));
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
         //act
         Mockito.when(iTraerPersona.damePersonaSegunDni(34724517)).thenReturn(p1);
         Mockito.verify(iModificarPersona,Mockito.never()).modificarAltura(p1);
         //assert
-        assertThrows(ExceptionPersonaAlturaIncorrecto.class,() ->{
-            simulacro.modificarAlturaPersona(34724517,-1.82);
-        });
+        assertThrows(ExceptionPersonaAlturaIncorrecto.class,() ->
+            simulacro.modificarAlturaPersona(34724517,-1.82));
 
     }
 
@@ -126,15 +123,14 @@ public class TestCUModificarPersona{
 
     public void test07_modificarPesoPersona_noExistePersona_Exception() throws ExceptionPersona{
         //arrange
-        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,07));
+        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,7));
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
         //act
         Mockito.when(iTraerPersona.damePersonaSegunDni(34724517)).thenReturn(null);
         Mockito.verify(iModificarPersona,Mockito.never()).modificarPeso(p1);
         //assert
-        assertThrows(ExceptionPersonaNoEncontrada.class,() ->{
-            simulacro.modificarPesoPersona(34724517,94);
-        });
+        assertThrows(ExceptionPersonaNoEncontrada.class,() ->
+            simulacro.modificarPesoPersona(34724517,94));
     }
 
     @Order(8)
@@ -142,15 +138,14 @@ public class TestCUModificarPersona{
 
     public void test08_modificarAlturaPersona_PersonaNoExiste_Exception() throws ExceptionPersona{
         //arrange
-        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,07));
+        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,34724517, LocalDate.of(1989,11,7));
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
         //act
         Mockito.when(iTraerPersona.damePersonaSegunDni(34724517)).thenReturn(null);
         Mockito.verify(iModificarPersona,Mockito.never()).modificarAltura(p1);
         //assert
-        assertThrows(ExceptionPersonaNoEncontrada.class,() ->{
-            simulacro.modificarAlturaPersona(34724517,1.82);
-        });
+        assertThrows(ExceptionPersonaNoEncontrada.class,() ->
+            simulacro.modificarAlturaPersona(34724517,1.82));
 
     }
 
@@ -158,30 +153,28 @@ public class TestCUModificarPersona{
     @Test
     public void test09_modificarPesoPersona_dniErroneo_ExceptionPersonaDniErroneo() throws ExceptionPersona{
         //arrange
-        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,347245176, LocalDate.of(1989,11,07));
+        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,347245176, LocalDate.of(1989,11,7));
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
         //act
         Mockito.verify(iTraerPersona,Mockito.never()).damePersonaSegunDni(347245176);
         Mockito.verify(iModificarPersona,Mockito.never()).modificarPeso(p1);
         //assert
-        assertThrows(ExceptionPersonaDniIncorrecto.class,() ->{
-            simulacro.modificarPesoPersona(347245176,94);
-        });
+        assertThrows(ExceptionPersonaDniIncorrecto.class,() ->
+            simulacro.modificarPesoPersona(347245176,94));
     }
 
     @Order(10)
     @Test
     public void test10_modificarAlturaPersona_dniErroneo_ExceptionPersonaDniErroneo() throws ExceptionPersona{
         //arrange
-        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,347245176, LocalDate.of(1989,11,07));
+        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,347245176, LocalDate.of(1989,11,7));
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
         //act
         Mockito.verify(iTraerPersona,Mockito.never()).damePersonaSegunDni(347245176);
         Mockito.verify(iModificarPersona,Mockito.never()).modificarPeso(p1);
         //assert
-        assertThrows(ExceptionPersonaDniIncorrecto.class,() ->{
-            simulacro.modificarPesoPersona(347245176,94);
-        });
+        assertThrows(ExceptionPersonaDniIncorrecto.class,() ->
+            simulacro.modificarPesoPersona(347245176,94));
     }
 
     @Order(11)
