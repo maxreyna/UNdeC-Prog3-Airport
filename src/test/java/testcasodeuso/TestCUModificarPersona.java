@@ -154,6 +154,21 @@ public class TestCUModificarPersona{
 
     }
 
+    @Order(9)
+    @Test
+    public void test09_modificarPesoPersona_dniErroneo_ExceptionPersonaDniErroneo() throws ExceptionPersona{
+        //arrange
+        Persona p1 = Persona.instaciaPersona(1,"Maximiliano","Reyna",1.80,92.0,347245176, LocalDate.of(1989,11,07));
+        ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
+        //act
+        Mockito.verify(iTraerPersona,Mockito.never()).damePersonaSegunDni(347245176);
+        Mockito.verify(iModificarPersona,Mockito.never()).modificarPeso(p1);
+        //assert
+        assertThrows(ExceptionPersonaDniIncorrecto.class,() ->{
+            simulacro.modificarPesoPersona(347245176,94);
+        });
+    }
+
 }
 
 
