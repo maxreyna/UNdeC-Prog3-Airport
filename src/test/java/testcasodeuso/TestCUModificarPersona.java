@@ -184,6 +184,24 @@ public class TestCUModificarPersona{
         });
     }
 
+    @Order(11)
+    @Test
+    public void test11_modificarDatosPersona_DatosSeModificanCorrectamente() throws ExceptionPersona{
+        //arrange
+        Persona estaPersona = Persona.instaciaPersona(1,"Santiago","Chanampe",1.80,92.0,37724517, LocalDate.of(1997,11,7));
+        Persona personaActualizada = Persona.instaciaPersona(1,"Jessica","Rojas",1.78,60,37724517, LocalDate.of(1997,11,7));
+
+        ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
+
+        //act
+        Mockito.when(iTraerPersona.damePersonaSegunDni(personaActualizada.getDniInt())).thenReturn(estaPersona);
+        estaPersona.actualizarDatos(personaActualizada);
+        Mockito.when(iModificarPersona.modificarDatos(estaPersona)).thenReturn(true);
+
+        //assert
+        assertTrue(simulacro.modificarDatosPersona(personaActualizada));
+    }
+
 }
 
 

@@ -41,4 +41,10 @@ public class ModificarPersonaCU {
         personaAModificar.actualizarAltura(nuevaAltura);
         return iModificarPersona.modificarAltura(personaAModificar);
     }
+
+    public boolean modificarDatosPersona(Persona personaActualizada) {
+        Persona personaBuscada = iTraerPersona.damePersonaSegunDni(personaActualizada.getDniInt());
+        personaBuscada.actualizarDatos(personaActualizada);
+        return iModificarPersona.modificarDatos(personaBuscada);
+    }
 }
