@@ -3,6 +3,7 @@ package casosdeuso;
 import dominio.Persona;
 import exceptions.ExceptionPersona;
 import exceptions.ExceptionPersonaAlturaIncorrecto;
+import exceptions.ExceptionPersonaNoEncontrada;
 import exceptions.ExceptionPersonaPesoIncorrecto;
 import repositorio.IModificarPersona;
 import repositorio.ITraerPersona;
@@ -18,6 +19,9 @@ public class ModificarPersonaCU {
 
     public boolean modificarPesoPersona(int dni,double nuevoPeso) throws ExceptionPersona {
         Persona personaAModificar = iTraerPersona.damePersonaSegunDni(dni);
+        if(personaAModificar == null){
+            throw new ExceptionPersonaNoEncontrada("La persona buscada no existe");
+        }
         personaAModificar.actualizarPeso(nuevoPeso);
         return iModificarPersona.modificarPeso(personaAModificar);
     }
