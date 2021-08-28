@@ -28,6 +28,9 @@ public class ModificarPersonaCU {
 
     public boolean modificarAlturaPersona(int dni, double nuevaAltura) throws ExceptionPersona {
         Persona personaAModificar = iTraerPersona.damePersonaSegunDni(dni);
+        if(personaAModificar == null){
+            throw new ExceptionPersonaNoEncontrada("La persona buscada no existe en la BD");
+        }
         personaAModificar.actualizarAltura(nuevaAltura);
         return iModificarPersona.modificarAltura(personaAModificar);
     }
