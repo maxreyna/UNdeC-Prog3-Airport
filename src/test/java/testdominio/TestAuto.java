@@ -39,7 +39,7 @@ public class TestAuto {
 
     @Test
     @Order(3)
-    public void test03_auto_exceptionAtributoVacio() throws ExceptionAuto{
+    public void test03_auto_exceptionAtributoVacio(){
         assertThrows(ExceptionAutoAtributoVacio.class, ()-> Auto.instanciaAuto(1,"", "Allure", "Blanco", "1.6", "5","ab 123 cd", "2017"));
         assertThrows(ExceptionAutoAtributoVacio.class, ()-> Auto.instanciaAuto(2,"Peugeot", "", "Blanco", "1.6", "5","ab 123 cd", "2017"));
         assertThrows(ExceptionAutoAtributoVacio.class, ()-> Auto.instanciaAuto(4,"Peugeot", "Allure", "Blanco", "", "5","ab 123 cd", "2017"));
@@ -50,7 +50,16 @@ public class TestAuto {
 
     @Test
     @Order(4)
-    public void test04_auto_colorVacio_autoSeCreaCorrectamente() throws ExceptionAuto{
-        assertNotNull(Auto.instanciaAuto(3,"Peugeot", "Allure", "", "1.6", "5","ab 123 cd", "2017"));
-       }
+    public void test04_auto_colorVacio_autoSeCreaCorrectamente() throws ExceptionAuto {
+        assertNotNull(Auto.instanciaAuto(3, "Peugeot", "Allure", "", "1.6", "5", "ab 123 cd", "2017"));
+    }
+
+    @Test
+    @Order(5)
+    public void test05_auto_exceptionNegativeAtributtes() throws ExceptionAuto {
+        assertThrows(ExceptionAutoNegativeAtributte.class, () -> Auto.instanciaAuto(1,"Peugeot", "Allure", "Blanco", "-1.6", "5","ab 123 cd", "2017"));
+        assertThrows(ExceptionAutoNegativeAtributte.class, () -> Auto.instanciaAuto(1,"Peugeot", "Allure", "Blanco", "1.6", "-5","ab 123 cd", "2017"));
+        assertThrows(ExceptionAutoNegativeAtributte.class, () -> Auto.instanciaAuto(1,"Peugeot", "Allure", "Blanco", "1.6", "5","ab 123 cd", "-2017"));
+    }
+
 }
