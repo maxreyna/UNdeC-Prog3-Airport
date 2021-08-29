@@ -28,7 +28,7 @@ public class TestCUTraerAuto {
     @Order(1)
     @Test
     public void test01_autoExisteYEsTraido() throws ExceptionAutoNoEncontrado {
-        Auto a1 = Auto.instanciaAuto(1,"Peugeot", "Allure", "Blanco", "1.6", "ab 123 cd", "2018");
+        Auto a1 = Auto.instanciaAuto(1,"Peugeot", "Allure", "Blanco", "1.6", "5","ab 123 cd", "2018");
         TraerAutoCU simulacion = new TraerAutoCU(iTraerAuto);
 
         //act

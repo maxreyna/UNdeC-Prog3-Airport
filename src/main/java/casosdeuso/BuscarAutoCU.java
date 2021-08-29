@@ -11,6 +11,6 @@ public class BuscarAutoCU {
 
     public boolean buscarAuto(String marca) {
         boolean autoEncontrado = iLeerAuto.buscarAutoPorMarca(marca);
-        return true;
+        return autoEncontrado;
     }
 }

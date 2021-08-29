@@ -14,10 +14,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @ExtendWith(MockitoExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestAuto {
+
     @Test
     @Order(1)
     public void Test01_Auto(){
-        Auto a1 = Auto.instanciaAuto(1,"Peugeot", "Allure", "Blanco", "1.6", "ab 123 cd", "2017");
+        Auto a1 = Auto.instanciaAuto(1,"Peugeot", "Allure", "Blanco", "1.6", "5","ab 123 cd", "2017");
         assertNotNull(a1);
     }
 

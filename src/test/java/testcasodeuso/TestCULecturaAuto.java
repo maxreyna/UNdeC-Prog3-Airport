@@ -22,7 +22,7 @@ public class TestCULecturaAuto {
 
     public void test01_AutoExisteYEsLeido(){
         //arrange
-        Auto a1 = Auto.instanciaAuto(1,"Peugeot", "Allure", "Blanco", "1.6", "ab 123 cd", "2017");
+        Auto a1 = Auto.instanciaAuto(1,"Peugeot", "Allure", "Blanco", "1.6","5", "ab 123 cd", "2017");
 
         //act
         Mockito.when(iLeerAuto.buscarAutoPorMarca("Peugeot")).thenReturn(true);
