@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(MockitoExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+
 public class TestAuto {
 
     @Test
@@ -26,14 +27,14 @@ public class TestAuto {
 
     @Test
     @Order(2)
-    public void test02_Auto_atributosNulos(){
+    public void test02_Auto_atributosNulos() throws ExceptionAuto{
         assertThrows(ExceptionAutoMarcaNulo.class, ()-> Auto.instanciaAuto(1,null, "Allure", "Blanco", "1.6", "5","ab 123 cd", "2017"));
         assertThrows(ExceptionAutoModeloNulo.class, ()-> Auto.instanciaAuto(1,"Peugeot", null, "Blanco", "1.6", "5","ab 123 cd", "2017"));
-        assertThrows(ExceptionAutoColorNulo.class, ()-> Auto.instanciaAuto(1,null, "Allure", null, "1.6", "5","ab 123 cd", "2017"));
-        assertThrows(ExceptionAutoCilindradaNulo.class, ()-> Auto.instanciaAuto(1,null, "Allure", "Blanco", null, "5","ab 123 cd", "2017"));
-        assertThrows(ExceptionAutoPuertaNulo.class, ()-> Auto.instanciaAuto(1,null, "Allure", "Blanco", "1.6", null,"ab 123 cd", "2017"));
-        assertThrows(ExceptionAutoPatenteNulo.class, ()-> Auto.instanciaAuto(1,null, "Allure", "Blanco", "1.6", "5",null, "2017"));
-        assertThrows(ExceptionAutoAnioNulo.class, ()-> Auto.instanciaAuto(1,null, "Allure", "Blanco", "1.6", "5","ab 123 cd", null));
+        assertThrows(ExceptionAutoColorNulo.class, ()-> Auto.instanciaAuto(1,"Peugeot", "Allure", null, "1.6", "5","ab 123 cd", "2017"));
+        assertThrows(ExceptionAutoCilindradaNulo.class, ()-> Auto.instanciaAuto(1,"Peugeot", "Allure", "Blanco", null, "5","ab 123 cd", "2017"));
+        assertThrows(ExceptionAutoPuertaNulo.class, ()-> Auto.instanciaAuto(1,"Peugeot", "Allure", "Blanco", "1.6", null,"ab 123 cd", "2017"));
+        assertThrows(ExceptionAutoPatenteNulo.class, ()-> Auto.instanciaAuto(1,"Peugeot", "Allure", "Blanco", "1.6", "5",null, "2017"));
+        assertThrows(ExceptionAutoAnioNulo.class, ()-> Auto.instanciaAuto(1,"Peugeot", "Allure", "Blanco", "1.6", "5","ab 123 cd", null));
     }
 
 }

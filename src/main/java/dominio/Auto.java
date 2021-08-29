@@ -39,9 +39,6 @@ public class Auto {
             throw new ExceptionAutoPatenteNulo("Error: El campo patente no debe ser nulo");
         if (anio == null)
             throw new ExceptionAutoAnioNulo("Error: El campo anio no debe ser nulo");
-
-
-
         return new Auto(id,marca, modelo, color, cilindrada,puerta, patente, anio);
     }
 }

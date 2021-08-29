@@ -3,6 +3,7 @@ package testcasodeuso;
 
 import casosdeuso.BuscarAutoCU;
 import dominio.Auto;
+import exceptions.ExceptionAuto;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,7 +21,7 @@ public class TestCULecturaAuto {
     @Test
     @Order(1)
 
-    public void test01_AutoExisteYEsLeido(){
+    public void test01_AutoExisteYEsLeido() throws ExceptionAuto {
         //arrange
         Auto a1 = Auto.instanciaAuto(1,"Peugeot", "Allure", "Blanco", "1.6","5", "ab 123 cd", "2017");
 
