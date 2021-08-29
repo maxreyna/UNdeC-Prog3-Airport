@@ -4,6 +4,7 @@ Reglas de Auto:
 * Ningun dato puede ser nulo,pero se pueden existir datos vacios como el color.
 
 * La cilindrada, puertas , anio no pueden ser negativos ni cero.
+* Las puertas solo pueden ser 3 y 5.
 
 * Se pueden modificar los atributos:
         +color
