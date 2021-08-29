@@ -25,6 +25,8 @@ public class Auto {
 
 
     public static Auto instanciaAuto(int id, String marca, String modelo, String color, String cilindrada,String puerta, String patente, String anio) throws ExceptionAuto {
+        if  (marca.equals("") || modelo.equals("") || cilindrada.equals("") || puerta.equals("") || patente.equals("") || anio.equals("") )
+            throw new ExceptionAutoAtributoVacio("Error: Solo el campo color puede estar vacio ");
         if (marca == null)
             throw new ExceptionAutoMarcaNulo("Error: El campo marca no debe ser nulo");
         if (modelo == null)
