@@ -25,6 +25,8 @@ public class Auto {
 
 
     public static Auto instanciaAuto(int id, String marca, String modelo, String color, String cilindrada,String puerta, String patente, String anio) throws ExceptionAuto {
+        if (Double.parseDouble(cilindrada) == 0 || Integer.parseInt(puerta) == 0 || Integer.parseInt(anio) == 0)
+            throw new ExceptionAutoZeroAtributte("Error: The atributtes cilindra, puerta, anio cannot be zero");
         if (Double.parseDouble(cilindrada)< 0 || Integer.parseInt(puerta) < 0 || Integer.parseInt(anio) < 0)
             throw new ExceptionAutoNegativeAtributte("Error: The atributtes cilindrada,puerta,anio cannot be negative");
         if  (marca.equals("") || modelo.equals("") || cilindrada.equals("") || puerta.equals("") || patente.equals("") || anio.equals("") )
