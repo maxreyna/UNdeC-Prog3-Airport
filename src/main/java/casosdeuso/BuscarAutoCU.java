@@ -1,16 +1,16 @@
 package casosdeuso;
 
-import repositorio.ILeerAuto;
+import repositorio.IBuscarAuto;
 
 public class BuscarAutoCU {
-    private ILeerAuto iLeerAuto;
+    private IBuscarAuto iBuscarAuto;
 
-    public BuscarAutoCU(ILeerAuto iLeerAuto) {
-        this.iLeerAuto = iLeerAuto;
+    public BuscarAutoCU(IBuscarAuto iBuscarAuto) {
+        this.iBuscarAuto = iBuscarAuto;
     }
 
     public boolean buscarAuto(String marca) {
-        boolean autoEncontrado = iLeerAuto.buscarAutoPorMarca(marca);
+        boolean autoEncontrado = iBuscarAuto.buscarAutoPorMarca(marca);
         return autoEncontrado;
     }
 }

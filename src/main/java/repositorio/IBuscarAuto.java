@@ -1,6 +1,6 @@
 package repositorio;
 
 
-public interface ILeerAuto {
+public interface IBuscarAuto {
     boolean buscarAutoPorMarca(String marca);
 }
