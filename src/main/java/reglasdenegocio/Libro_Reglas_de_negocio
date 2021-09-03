@@ -1,0 +1,21 @@
+Reglas de negocio de Libro:
+* Los atributos de libro:
+ id
+ ISBN
+ titulo
+ autor
+ anioEdicion
+ editorial
+ paginas
+ precio
+
+ *El precio y la cantidad de paginas puede ser cero.
+ *La cantidad de paginas puede ser vacio.
+ *El ISBN es unica y no puede ser nulo.
+ *El campo editorial, anio de edicion, paginas y el precio se pueden modificar.
+ *El precio y la cantidad de paginas no pueden ser negativos.
+ *Si el año de edicion es mayor a 1970 el isbn debe tener 13 digitos. Sino, 12 a 10 digitos.
+ *El campo autor pueder ir vacio, es ese caso se setea como "Sin autor".
+
+
+
